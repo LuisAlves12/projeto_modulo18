@@ -9,12 +9,22 @@
     <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/all.min.js')}}"></script>
+    <style>
+      body{
+        background-color: #252429;
+        color: #ffffff;
+      }
+      a{
+        color:#ffffff;
+      }
+    </style>  
 </head>
 <body>
-    <h1 style="color: #00ff00;">@yield('header')</h1>
+    <h1 style="text-align:center; color: #ffffff;">@yield('Titulo')</h1>
     @yield('conteudo')
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg bg-dark">
     <div class="navbar-nav">
+      <a class="nav-item nav-link" href="{{route('procura.index')}}">Pesquisa</a>
       <a class="nav-item nav-link" href="{{route('equipas.index')}}">Equipas</a>
       <a class="nav-item nav-link" href="{{route('jogadores.index')}}">Jogadores</a>
     </div>

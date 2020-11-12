@@ -2,6 +2,9 @@
 @section('titulo-pagina')
 Jogadores_equipas
 @endsection
+@section('Titulo')
+Equipa
+@endsection
 @section('conteudo')
 <ul>
 ID Equipa: {{$equipa->id_equipa}}<br>

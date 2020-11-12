@@ -22,3 +22,5 @@ Route::get('/equipas','App\Http\Controllers\EquipasController@index')->name('equ
 Route::get('/jogadores/show/{id_jogador}','App\Http\Controllers\JogadoresController@show')->name('jogadores.show');
 
 Route::get('equipas/show/{id_equipa}','App\Http\Controllers\EquipasController@show')->name('equipas.show');
+
+Route::post('/formenviado','App\Http\Controllers\ProcuraController@formenviado')->name('pesquisa.show');
