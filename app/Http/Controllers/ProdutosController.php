@@ -16,7 +16,7 @@ class ProdutosController extends Controller
     }
     public function show(Request $request){
         $id_produto = $request->id_produtos;
-        $produto=Produto::where('id_produto',$id_produto)->first();
+        $produto=Produto::where('id_produto',$id_produto)->with('encomendas')->first();
         return view('produtos.show',[
             'produtos'=>$produto
         ]);

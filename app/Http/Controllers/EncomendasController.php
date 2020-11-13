@@ -16,7 +16,7 @@ class EncomendasController extends Controller
     }
     public function show(Request $request){
         $id_encomenda = $request->id_encomenda;
-        $encomenda=Encomenda::where('id_encomenda',$id_encomenda)->first();
+        $encomenda=Encomenda::where('id_encomenda',$id_encomenda)->with(['produtos','clientes','vendedores'])->first();
         return view('encomendas.show',[
             'encomenda'=>$encomenda
         ]);

@@ -3,11 +3,11 @@
 Encomendas
 @endsection
 @section('Titulo')
-Resultado da pesquisa:
+Produtos:
 @endsection
 @section('conteudo')
 <ul>
-ID Produto: {{$produtos->id_produtos}}<br>
+ID Produto: {{$produtos->id_produto}}<br>
 Designação: {{$produtos->designacao}}<br>
 Stock: {{$produtos->stock}}<br>
 Preço: {{$produtos->preco}}<br>

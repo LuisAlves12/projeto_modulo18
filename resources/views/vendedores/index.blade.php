@@ -3,7 +3,7 @@
 Encomendas
 @endsection
 @section('Titulo')
-Resultado da pesquisa:
+Vendedores:
 @endsection
 @section('conteudo')
 <ul>

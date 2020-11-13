@@ -10,4 +10,18 @@ class Encomenda extends Model
     use HasFactory;
     protected $primaryKey="id_encomenda";
     protected $table="encomendas";
+    public function produtos(){
+        return $this->belongsToMany(
+            'App\Models\Produto',
+            'encomendas_produtos',
+            'id_encomenda',
+            'id_produto'
+        )->withTimestamps();
+    } 
+    public function clientes(){
+        return $this->belongsTo('App\Models\Cliente','id_cliente');
+    }
+    public function vendedores(){
+        return $this->belongsTo('App\Models\Vendedor','id_vendedor');
+    }
 }

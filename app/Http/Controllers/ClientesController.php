@@ -16,7 +16,7 @@ class ClientesController extends Controller
     }
     public function show(Request $request){
         $id_cliente = $request->id_cliente;
-        $cliente=Cliente::where('id_cliente',$id_cliente)->first();
+        $cliente=Cliente::where('id_cliente',$id_cliente)->with('encomendas')->first();
         return view('clientes.show',[
             'cliente'=>$cliente
         ]);

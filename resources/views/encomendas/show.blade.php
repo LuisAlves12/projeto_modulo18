@@ -3,13 +3,22 @@
 Encomendas
 @endsection
 @section('Titulo')
-Resultado da pesquisa:
+Encomendas:
 @endsection
 @section('conteudo')
 <ul>
 ID Encomenda: {{$encomenda->id_encomenda}}<br>
-ID Cliente: {{$encomenda->id_cliente}}<br>
+
+@if(isset($encomenda->cliente))
+        Nome: {{$cliente->nome}}<br>
+    @else
+        <diV class="alert alert-danger" role="alert">
+        Cliente sem encomenda
+        </div>
+    @endif 
+
 ID Vendedor: {{$encomenda->id_vendedor}}<br>
+
 Data: {{$encomenda->data}}<br>
 Observações: {{$encomenda->observacoes}}
 </ul>
