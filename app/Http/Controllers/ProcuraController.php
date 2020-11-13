@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Jogador;
-use App\Models\Equipa;
+use App\Models\Cliente;
+use App\Models\Produto;
 
 class ProcuraController extends Controller
 {
@@ -13,9 +13,9 @@ class ProcuraController extends Controller
         return view('pesquisa');
     }
     public function formenviado(Request $request){
-        $jogador=$request->pesquisa;
-        $resultado=Jogador::where('nome','Like','%'.$jogador.'%')->get();
-        $resultado2=Equipa::where('designacao','Like','%'.$jogador.'%')->get();
-        return view('pesquisares',['pesquisa'=>$jogador,'resultado'=>$resultado,'resultado2'=>$resultado2]);
+        $string=$request->pesquisa;
+        $resultado=Cliente::where('nome','Like','%'.$string.'%')->get();
+        $resultado2=Produto::where('designacao','Like','%'.$string.'%')->get();
+        return view('pesquisares',['pesquisa'=>$string,'resultado'=>$resultado,'resultado2'=>$resultado2]);
     }
 }

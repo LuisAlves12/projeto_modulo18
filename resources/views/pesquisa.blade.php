@@ -1,6 +1,6 @@
 @extends('layout')
 @section('titulo-pagina')
-Jogadores_equipas
+Encomendas
 @endsection
 @section('Titulo')
 Pesquisa

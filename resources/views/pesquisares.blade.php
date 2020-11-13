@@ -1,20 +1,20 @@
 @extends('layout')
 @section('titulo-pagina')
-Livraria
+Encomendas
 @endsection
 @section('Titulo')
 Resultado da pesquisa:
 @endsection
 @section('conteudo')
 @foreach($resultado as $res)
-    <a href="{{route('jogadores.show', ['id_jogador'=>$res->id_jogador])}}">
-    <h4>{{$res->nome}}</h4>
+    <a href="{{route('cliente.show', ['id_cliente'=>$res->id_cliente])}}">
+    <h4>Cliente: {{$res->nome}}</h4>
     </a>
     <br>
 @endforeach
 @foreach($resultado2 as $res2)
-    <a href="{{route('equipas.show', ['id_equipa'=>$res2->id_equipa])}}">
-    <h4>{{$res2->designacao}}</h4>
+    <a href="{{route('produtos.show', ['id_produtos'=>$res2->id_produto])}}">
+    <h4>Produto: {{$res2->designacao}}</h4>
     </a>
     <br>
 @endforeach

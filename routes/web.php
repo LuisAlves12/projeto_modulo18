@@ -13,14 +13,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','App\Http\Controllers\ProcuraController@index')->name('procura.index');
+//Route Pesquisa
 
-Route::get('/jogadores','App\Http\Controllers\JogadoresController@index')->name('jogadores.index');
+Route::get('/','App\Http\Controllers\ProcuraController@index')->name('pesquisa.index');
 
-Route::get('/equipas','App\Http\Controllers\EquipasController@index')->name('equipas.index');
+Route::post('/formenv','App\Http\Controllers\ProcuraController@formenviado')->name('pesquisa.show');
 
-Route::get('/jogadores/show/{id_jogador}','App\Http\Controllers\JogadoresController@show')->name('jogadores.show');
+//Route Clientes
 
-Route::get('equipas/show/{id_equipa}','App\Http\Controllers\EquipasController@show')->name('equipas.show');
+Route::get('/cliente','App\Http\Controllers\ClientesController@index')->name('cliente.index');
 
-Route::post('/formenviado','App\Http\Controllers\ProcuraController@formenviado')->name('pesquisa.show');
+Route::get('/cliente/{id_cliente}/show','App\Http\Controllers\ClientesController@show')->name('cliente.show');
+
+//Route Encomendas
+
+Route::get('/encomendas','App\Http\Controllers\EncomendasController@index')->name('encomendas.index');
+
+Route::get('/encomendas/{id_encomenda}/show','App\Http\Controllers\EncomendasController@show')->name('encomendas.show');
+
+//Route Produtos
+
+Route::get('/produtos','App\Http\Controllers\ProdutosController@index')->name('produtos.index');
+
+Route::get('/produtos/{id_produtos}/show','App\Http\Controllers\ProdutosController@show')->name('produtos.show');
+
+//Route Vendedores
+
+Route::get('/vendedores','App\Http\Controllers\VendedoresController@index')->name('vendedores.index');
+
+Route::get('/vendedores/{id_vendedor}/show','App\Http\Controllers\VendedoresController@show')->name('vendedores.show');
