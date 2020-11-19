@@ -18,6 +18,9 @@
       a{
         color:#ffffff;
       }
+      table,tr,td,th{
+        color:#ffffff;
+      }
     </style>  
 </head>
 <body>

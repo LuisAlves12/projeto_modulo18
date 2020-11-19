@@ -9,15 +9,21 @@ Encomendas:
 <ul>
 ID Encomenda: {{$encomenda->id_encomenda}}<br>
 
-@if(isset($encomenda->cliente))
-        Nome: {{$cliente->nome}}<br>
-    @else
-        <diV class="alert alert-danger" role="alert">
-        Cliente sem encomenda
-        </div>
-    @endif 
+@if(isset($encomenda->clientes))
+    Nome do cliente: {{$encomenda->clientes->nome}}<br>
+@else
+    <diV class="alert alert-danger" role="alert">
+    Cliente sem encomenda
+    </div>
+@endif 
 
-ID Vendedor: {{$encomenda->id_vendedor}}<br>
+@if(isset($encomenda->vendedores))
+    Nome do vendedor: {{$encomenda->vendedores->nome}}<br>
+@else
+    <diV class="alert alert-danger" role="alert">
+    Encomenda sem vendedor
+    </div>
+@endif 
 
 Data: {{$encomenda->data}}<br>
 Observações: {{$encomenda->observacoes}}

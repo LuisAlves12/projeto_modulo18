@@ -8,7 +8,7 @@ Pesquisa
 @section('conteudo')
 <form method="post" action="{{route('pesquisa.show')}}">
     @csrf
-<label for="pesquisa">Pesquisa</label>
+<label for="pesquisa"><h3>Pesquisa</h3></label>
 <input type="text" name="pesquisa">
 <button type="submit">Enviar</button>
 <br><br>
