@@ -17,6 +17,16 @@ ID Encomenda: {{$encomenda->id_encomenda}}<br>
     </div>
 @endif 
 
+@if(count($encomenda->produtos)>0)
+    @foreach($encomenda->produtos as $produto)   
+        Nome da Produto: {{$produto->designacao}}<br>
+    @endforeach
+    @else
+        <diV class="alert alert-danger" role="alert">
+            Encomenda sem produto
+        </div>
+@endif 
+
 @if(isset($encomenda->vendedores))
     Nome do vendedor: {{$encomenda->vendedores->nome}}<br>
 @else
