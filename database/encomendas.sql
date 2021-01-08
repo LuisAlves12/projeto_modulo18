@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 13-Nov-2020 às 16:17
+-- Generation Time: 08-Jan-2021 às 18:25
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.3.2
 
@@ -47,7 +47,8 @@ INSERT INTO `clientes` (`id_cliente`, `nome`, `morada`, `telefone`, `email`, `up
 (2, 'Antonio Pereira', 'Rua Nuno Alveres', '913334442', 'apereira@gmail.com', '2020-11-05 00:00:00', '2020-11-05 00:00:00'),
 (3, 'Rafael Ferreira', 'Rua Vasco da gama', '913346665', 'rferreira@gmail.com', '2020-11-05 00:00:00', '2020-11-05 00:00:00'),
 (4, 'João Manuel', 'Rua da ponte', '918976253', 'jmanuel@gmail.com', '2020-11-05 00:00:00', '2020-11-05 00:00:00'),
-(5, 'Inês Fonseca', 'Rua António Palha', '913678925', 'ifonseca@gmail.com', '2020-11-05 00:00:00', '2020-11-05 00:00:00');
+(5, 'Inês Fonseca', 'Rua António Palha', '913678925', 'ifonseca@gmail.com', '2020-11-05 00:00:00', '2020-11-05 00:00:00'),
+(11, 'Luis Alves', 'Rua 25 de abril', '1234567890123', 'luisalves@aedah.pt', '2021-01-08 17:23:36', '2021-01-08 17:23:28');
 
 -- --------------------------------------------------------
 
@@ -57,8 +58,8 @@ INSERT INTO `clientes` (`id_cliente`, `nome`, `morada`, `telefone`, `email`, `up
 
 CREATE TABLE `encomendas` (
   `id_encomenda` int(11) NOT NULL,
-  `id_cliente` int(11) DEFAULT '0',
-  `id_vendedor` int(11) DEFAULT '0',
+  `id_cliente` int(11) NOT NULL DEFAULT '0',
+  `id_vendedor` int(11) NOT NULL DEFAULT '0',
   `data` date DEFAULT NULL,
   `observacoes` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -73,7 +74,13 @@ INSERT INTO `encomendas` (`id_encomenda`, `id_cliente`, `id_vendedor`, `data`, `
 (1, 1, 1, '2020-12-02', 'Entregar durante a tarde.', '2020-12-02 00:00:00', '2020-12-02 00:00:00'),
 (2, 1, 2, '2020-12-03', NULL, '2020-12-31 00:00:00', '2020-12-31 00:00:00'),
 (3, 3, 1, '2020-12-23', 'O Cliente ficou insatisfeito com a última encomenda.', '2020-12-22 00:00:00', '2020-12-31 00:00:00'),
-(4, 4, 2, '2020-12-24', 'Muito bons', '2020-12-24 00:00:00', '2020-12-25 00:00:00');
+(4, 4, 2, '2020-12-24', 'Muito bons', '2020-12-24 00:00:00', '2020-12-25 00:00:00'),
+(5, 0, 0, '2021-01-01', 'ola', '2021-01-08 16:44:20', '2021-01-08 16:44:20'),
+(6, 0, 0, '2021-01-01', 'ola', '2021-01-08 16:47:34', '2021-01-08 16:47:34'),
+(7, 0, 0, '2021-01-01', 'ola', '2021-01-08 16:49:55', '2021-01-08 16:49:55'),
+(8, 0, 0, '2021-01-01', 'ola', '2021-01-08 16:59:51', '2021-01-08 16:59:51'),
+(9, 0, 0, '2021-01-01', 'aaaaaaa', '2021-01-08 17:19:33', '2021-01-08 17:19:33'),
+(10, 3, 2, '2021-01-01', 'aaaaaaa', '2021-01-08 17:21:11', '2021-01-08 17:21:11');
 
 -- --------------------------------------------------------
 
@@ -197,13 +204,13 @@ ALTER TABLE `vendedores`
 -- AUTO_INCREMENT for table `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `encomendas`
 --
 ALTER TABLE `encomendas`
-  MODIFY `id_encomenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_encomenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `encomendas_produtos`
