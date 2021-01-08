@@ -10,6 +10,13 @@ class Cliente extends Model
     use HasFactory;
     protected $primaryKey="id_cliente";
     protected $table="clientes";
+    protected $fillable=[
+        'nome',
+        'morada',
+        'telefone',
+        'email'
+    ];
+
     public function encomendas(){
         return $this->hasMany('App\Models\Encomenda','id_encomenda');
     }

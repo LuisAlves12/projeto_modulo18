@@ -38,4 +38,7 @@ ID Encomenda: {{$encomenda->id_encomenda}}<br>
 Data: {{$encomenda->data}}<br>
 Observações: {{$encomenda->observacoes}}
 </ul>
+<a href="{{route('encomendas.edit',['id_encomenda'=>$encomenda->id_encomenda])}}" class="btn btn-info" role="button">Editar Encomenda</a>
+<a href="{{route('encomendas.deleted',['id_encomenda'=>$encomenda->id_encomenda])}}" class="btn btn-info" role="button">Eliminar Encomenda</a>
+
 @endsection

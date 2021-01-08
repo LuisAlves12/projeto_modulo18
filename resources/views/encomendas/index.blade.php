@@ -15,4 +15,5 @@ Encomendas:
 </li>
 @endforeach
 </ul>
+<a href="{{route('encomendas.create')}}" class="btn btn-info" role="button">Adiciona Encomenda</a>
 @endsection

@@ -15,4 +15,5 @@ Clientes:
 </li>
 @endforeach
 </ul>
+<a href="{{route('cliente.create')}}" class="btn btn-info" role="button">Adiciona clientes</a>
 @endsection

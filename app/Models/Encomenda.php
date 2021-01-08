@@ -10,6 +10,16 @@ class Encomenda extends Model
     use HasFactory;
     protected $primaryKey="id_encomenda";
     protected $table="encomendas";
+    protected $fillable=[
+        'id_cliente',
+        'id_vendedor',
+        'data',
+        'observacoes'
+    ];
+    protected $dates=[
+        'data'
+    ];
+
     public function produtos(){
         return $this->belongsToMany(
             'App\Models\Produto',
@@ -18,9 +28,13 @@ class Encomenda extends Model
             'id_produto'
         )->withTimestamps();
     } 
+
+
     public function clientes(){
         return $this->belongsTo('App\Models\Cliente','id_cliente');
     }
+
+
     public function vendedores(){
         return $this->belongsTo('App\Models\Vendedor','id_vendedor');
     }
