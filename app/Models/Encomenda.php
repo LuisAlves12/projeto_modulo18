@@ -11,8 +11,8 @@ class Encomenda extends Model
     protected $primaryKey="id_encomenda";
     protected $table="encomendas";
     protected $fillable=[
-        'id_cliente',
         'id_vendedor',
+        'id_cliente',
         'data',
         'observacoes'
     ];

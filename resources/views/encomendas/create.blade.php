@@ -28,6 +28,15 @@ Nome Cliente: <select name="id_cliente" multiple="">
 Deverá ter um nome correto<br>
 @endif
 
+Produto : <select name="id_produto" multiple="">
+        @foreach($produto as $produtos)
+            <option value="{{$produtos->id_produto}}">{{$produtos->designacao}}</option>
+        @endforeach
+    </select><br>
+@if($errors->has('id_produto'))
+Deverá ter um nome correto<br>
+@endif
+
 Data: <input type="date" name="data" value="{{old('data')}}"><br>
 @if($errors->has('data'))
 Deverá ter um nome correto<br>

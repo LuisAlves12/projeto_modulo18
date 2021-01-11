@@ -65,7 +65,7 @@ class ClientesController extends Controller
         ]);
         $editCliente=$clientes->update($editarCliente);
         return redirect()->route('cliente.show',[
-            'clientes'=>$clientes->id_cliente
+            'id_cliente'=>$clientes->id_cliente
         ]);
     }
 

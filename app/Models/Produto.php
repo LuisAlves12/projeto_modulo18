@@ -9,7 +9,16 @@ class Produto extends Model
 {
     use HasFactory;
     protected $primaryKey="id_produto";
+
     protected $table="produtos";
+
+    protected $fillable=[
+        'designacao',
+        'stock',
+        'preco',
+        'observacoes'
+    ];
+
     public function encomendas(){
         return $this->belongsToMany(
             'App\Models\Encomenda',
