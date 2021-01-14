@@ -3,7 +3,7 @@
 Projeto
 @endsection
 @section('Titulo')
-Clientes:
+Encomendas:
 @endsection
 @section('conteudo')
 

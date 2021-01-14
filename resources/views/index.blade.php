@@ -3,51 +3,47 @@
 Projeto 
 @endsection
 @section('conteudo')
+<h1 style="text-align:center">Encomendas</h1>
 <style>
-.container{width:95%;max-width:970px;margin:auto;color:#fff}
-body{}
-.text-center{text-align:center}
-.social_icons a {
-  color: #F2FFFF;
-  font-size: 29px;
-  margin-right: 45px;
-  background-color:#1abc9c;
-  padding: 15px;
-  border-radius: 29px;
-  height: 29px;
-  width: 29px;
+.wrapper{
+  width:100%;
+  padding-top: 20px;
+  text-align:center;
 }
-
-.name{}
-.name h2 {
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 80px;
-  margin-top: 150px;
+.carousel{
+  width:90%;
+  margin:0px auto;
+}
+.slick-slide{
+  margin:10px;
+}
+.slick-slide img{
+  width:100%;
+  border: 2px solid #fff;
 }
 </style>
 
 
 
 <script type="text/javascript">
-$('body').vegas({
-  overlay: true,
-  transition: 'fade', 
-  transitionDuration: 4000,
-  delay: 10000,
-  animation: 'random',
-  animationDuration: 20000,
-  slides: [
-    { src: "{{asset('imagens/encomendas.jpg')}}" }  
-  ]
+$(document).ready(function(){
+  $('.carousel').slick({
+  slidesToShow: 3,
+  centerMode: true,
+  });
 });
 </script>
 
-<div class="container">
-    <div class="name text-center">
-        <h2 style="text-align:center">Encomendas</h2> 
-    </div>
-</div>
 
-<script src="https://raw.githubusercontent.com/jaysalvat/vegas/master/dist/vegas.min.js"></script>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<div class="wrapper">
+<div class="carousel">
+  <div><img src="{{asset('imagens/encomendas.jpg')}}"></div>
+  <div><img src="{{asset('imagens/encomendas1.jpg')}}"></div>
+  <div><img src="{{asset('imagens/encomendas2.jpg')}}"></div>
+  <div><img src="{{asset('imagens/encomendas3.jpg')}}"></div>
+  <div><img src="{{asset('imagens/encomendas4.jpg')}}"></div>
+</div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br>
 @endsection

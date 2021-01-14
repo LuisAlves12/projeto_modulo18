@@ -130,3 +130,6 @@ Route::get('/vendedores/{id_vendedor}/deleted','App\Http\Controllers\VendedoresC
 
 Route::delete('/vendedores/{id_vendedor}/destroy','App\Http\Controllers\VendedoresController@destroy')
     ->name('vendedores.destroy');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+use Auth;
 use App\Models\Produto;
 use App\Models\Encomenda;
 
@@ -26,10 +27,16 @@ class ProdutosController extends Controller
     }
 
     public function create(){
-        $encomenda=Encomenda::all();
-        return view('produtos.create',[
-            'encomenda'=>$encomenda
-        ]);
+        if(Gate::allows('admin')){
+            $encomenda=Encomenda::all();
+            return view('produtos.create',[
+                'encomenda'=>$encomenda
+            ]);
+        }
+        else{
+            return redirect()->route('produtos.index')
+            ->with('msg','Não têm permissão para aceder a area pretendida');
+        }
     }
 
     public function store(Request $request){
@@ -39,19 +46,30 @@ class ProdutosController extends Controller
             'preco'=>['nullable','numeric','min:1'],
             'observacoes'=>['nullable','min:5','max:255']
         ]);
-        $produto=Produto::create($novoProduto);
-        return redirect()->route('produtos.show',[
-            'id_produtos'=>$produto->id_produto
-        ]);
-
+        if(Gate::allows('admin')){
+            $produto=Produto::create($novoProduto);
+            return redirect()->route('produtos.show',[
+                'id_produtos'=>$produto->id_produto
+            ]);
+        }
+        else{
+            return redirect()->route('produtos.index')
+            ->with('msg','Não têm permissão para aceder a area pretendida');
+        }
     }
 
     public function edit(Request $request){
         $id_produtos=$request->id_produtos;
         $produto=Produto::where('id_produto',$id_produtos)->with('encomendas')->first();
-        return view('produtos.edit',[
-            'produtos'=>$produto
-        ]);
+        if(Gate::allows('admin')){
+            return view('produtos.edit',[
+                'produtos'=>$produto
+            ]);
+        }
+        else{
+            return redirect()->route('produtos.show')
+            ->with('msg','Não têm permissão para aceder a area pretendida');
+        }
     }
 
     public function update(Request $request){
@@ -63,32 +81,50 @@ class ProdutosController extends Controller
             'preco'=>['nullable','numeric','min:1'],
             'observacoes'=>['nullable','min:5','max:255']
         ]);
-        $editarProduto=$produto->update($editProduto);
-        return redirect()->route('produtos.show',[
-            'id_produtos'=>$produto->id_produto
-        ]);
+        if(Gate::allows('admin')){
+            $editarProduto=$produto->update($editProduto);
+            return redirect()->route('produtos.show',[
+                'id_produtos'=>$produto->id_produto
+            ]);
+        }
+        else{
+            return redirect()->route('produtos.show')
+            ->with('msg','Não têm permissão para aceder a area pretendida');
+        }
     }
 
     public function deleted(Request $request){
         $id_produtos=$request->id_produtos;
         $produto=Produto::where('id_produto',$id_produtos)->with('encomendas')->first();
-        if(is_null($produto)){
-            return redirect()->route('produtos.index')->with('msg','Não existe este produto');
+        if(Gate::allows('admin')){
+            if(is_null($produto)){
+                return redirect()->route('produtos.index')->with('msg','Não existe este produto');
+            }
+            else{
+                return view('produtos.delete',['produtos'=>$produto]);
+            }
         }
         else{
-            return view('produtos.delete',['produtos'=>$produto]);
+            return redirect()->route('produtos.show')
+            ->with('msg','Não têm permissão para aceder a area pretendida');
         }
     }
 
     public function destroy(Request $request){
         $id_produtos=$request->id_produtos;
         $produto=Produto::where('id_produto',$id_produtos)->with('encomendas')->first();
-        if(is_null($produto)){
-            return redirect()->route('produtos.index')->with('msg','Não existe este produto');
+        if(Gate::allows('admin')){
+            if(is_null($produto)){
+                return redirect()->route('produtos.index')->with('msg','Não existe este produto');
+            }
+            else{
+                $produto->delete();
+                return view('produtos.delete',['produtos'=>$produto]);
+            }
         }
         else{
-            $produto->delete();
-            return view('produtos.delete',['produtos'=>$produto]);
+            return redirect()->route('produtos.show')
+            ->with('msg','Não têm permissão para aceder a area pretendida');
         }
     }
 
