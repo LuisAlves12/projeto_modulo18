@@ -119,14 +119,14 @@ Route::get('/vendedores/create','App\Http\Controllers\VendedoresController@creat
 Route::post('/vendedores/store','App\Http\Controllers\VendedoresController@store')
     ->name('vendedores.store');
 
-Route::get('/vendedores/{id_produtos}/edit','App\Http\Controllers\VendedoresController@edit')
+Route::get('/vendedores/{id_vendedor}/edit','App\Http\Controllers\VendedoresController@edit')
     ->name('vendedores.edit');
 
-Route::patch('/vendedores/{id_produtos}/update','App\Http\Controllers\VendedoresController@update')
+Route::patch('/vendedores/{id_vendedor}/update','App\Http\Controllers\VendedoresController@update')
     ->name('vendedores.update');
 
-Route::get('/vendedores/{id_produtos}/deleted','App\Http\Controllers\VendedoresController@deleted')
+Route::get('/vendedores/{id_vendedor}/deleted','App\Http\Controllers\VendedoresController@deleted')
     ->name('vendedores.deleted');
 
-Route::delete('/vendedores/{id_produtos}/destroy','App\Http\Controllers\VendedoresController@destroy')
+Route::delete('/vendedores/{id_vendedor}/destroy','App\Http\Controllers\VendedoresController@destroy')
     ->name('vendedores.destroy');

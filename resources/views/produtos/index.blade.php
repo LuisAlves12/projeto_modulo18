@@ -15,4 +15,6 @@ Produtos:
 </li>
 @endforeach
 </ul>
+<a href="{{route('produtos.create',['id_produtos'=>$produtos->id_produto])}}" class="btn btn-info" role="button">Adicionar Produto</a>
+
 @endsection

@@ -12,4 +12,6 @@ Nome: {{$vendedor->nome}}<br>
 Especialidade: {{$vendedor->especialidade}}<br>
 Email: {{$vendedor->email}}<br>
 </ul>
+<a href="{{route('vendedores.edit',['id_vendedor'=>$vendedor->id_vendedor])}}" class="btn btn-info" role="button">Editar Vendedor</a>
+<a href="{{route('vendedores.deleted',['id_vendedor'=>$vendedor->id_vendedor])}}" class="btn btn-info" role="button">Eliminar Vendedor</a>
 @endsection

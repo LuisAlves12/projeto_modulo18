@@ -23,11 +23,14 @@ Deverá ter um nome correto<br>
 
 Produto: <select name="id_produto">
     @foreach($produto as $produtos)
-        <option value="{{$produtos->id_produto}}">@if(in_array($produtos->id_produto, $produtosEncomendas))selected @endif {{produtos->designacao}} <br>
+        <option value="{{$produtos->id_produto}}">@if(in_array($produtos->id_produto, $produtosEncomendas))selected @endif {{
+            $produtos->designacao}} <br>
     @endforeach
+    </select>
 @if($errors->has('$id_produto'))
 Deverá ter um nome correto<br>
 @endif
+<br>
 
 Data: <input type="date" name="data" value="{{$encomenda->data}}"><br>
 @if($errors->has('data'))

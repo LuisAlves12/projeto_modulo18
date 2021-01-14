@@ -15,4 +15,6 @@ Vendedores:
 </li>
 @endforeach
 </ul>
+<a href="{{route('vendedores.create',['id_vendedor'=>$vendedores->id_vendedor])}}" class="btn btn-info" role="button">Adicionar Vendedor</a>
+
 @endsection
