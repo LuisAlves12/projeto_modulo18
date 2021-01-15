@@ -7,7 +7,7 @@ Clientes:
 @endsection
 @section('conteudo')
 
-<form action="{{route('cliente.store')}}" method="post">
+<form action="{{route('cliente.store')}}" enctype="multipart/form-data" method="post">
     @csrf 
 
 Nome: <input type="text" name="nome" value="{{old('nome')}}"><br>
@@ -28,6 +28,11 @@ Deverá ter um nome correto<br>
 Email: <input type="text" name="email" value="{{old('email')}}"><br>
 @if($errors->has('email'))
 Deverá ter um nome correto<br>
+@endif
+
+Ficheiro Cliente: <input type="file" name="ficheiro_cliente" value="{{old('ficheiro_cliente')}}"><br>
+@if($errors->has('ficheiro_cliente'))
+Deverá ter um Ficheiro correto<br>
 @endif
 
 <input type="submit" value="Enviar">

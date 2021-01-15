@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 08-Jan-2021 às 18:25
+-- Generation Time: 15-Jan-2021 às 18:13
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.3.2
 
@@ -34,6 +34,8 @@ CREATE TABLE `clientes` (
   `morada` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `telefone` varchar(13) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_user` int(11) NOT NULL DEFAULT '1',
+  `ficheiro_cliente` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -42,13 +44,13 @@ CREATE TABLE `clientes` (
 -- Extraindo dados da tabela `clientes`
 --
 
-INSERT INTO `clientes` (`id_cliente`, `nome`, `morada`, `telefone`, `email`, `updated_at`, `created_at`) VALUES
-(1, 'José Alves', 'Rua 25 de Abril', '913345665', 'jalves@gmail.com', '2020-11-05 00:00:00', '2020-11-05 00:00:00'),
-(2, 'Antonio Pereira', 'Rua Nuno Alveres', '913334442', 'apereira@gmail.com', '2020-11-05 00:00:00', '2020-11-05 00:00:00'),
-(3, 'Rafael Ferreira', 'Rua Vasco da gama', '913346665', 'rferreira@gmail.com', '2020-11-05 00:00:00', '2020-11-05 00:00:00'),
-(4, 'João Manuel', 'Rua da ponte', '918976253', 'jmanuel@gmail.com', '2020-11-05 00:00:00', '2020-11-05 00:00:00'),
-(5, 'Inês Fonseca', 'Rua António Palha', '913678925', 'ifonseca@gmail.com', '2020-11-05 00:00:00', '2020-11-05 00:00:00'),
-(11, 'Luis Alves', 'Rua 25 de abril', '1234567890123', 'luisalves@aedah.pt', '2021-01-08 17:23:36', '2021-01-08 17:23:28');
+INSERT INTO `clientes` (`id_cliente`, `nome`, `morada`, `telefone`, `email`, `id_user`, `ficheiro_cliente`, `updated_at`, `created_at`) VALUES
+(1, 'José Alves', 'Rua 25 de Abril', '913345665', 'jalves@gmail.com', 1, NULL, '2020-11-05 00:00:00', '2020-11-05 00:00:00'),
+(2, 'Antonio Pereira', 'Rua Nuno Alveres', '913334442', 'apereira@gmail.com', 1, NULL, '2020-11-05 00:00:00', '2020-11-05 00:00:00'),
+(3, 'Rafael Ferreira', 'Rua Vasco da gama', '913346665', 'rferreira@gmail.com', 1, NULL, '2020-11-05 00:00:00', '2020-11-05 00:00:00'),
+(4, 'João Manuel', 'Rua da ponte', '918976253', 'jmanuel@gmail.com', 1, NULL, '2020-11-05 00:00:00', '2020-11-05 00:00:00'),
+(5, 'Inês Fonseca', 'Rua António Palha', '913678925', 'ifonseca@gmail.com', 1, NULL, '2020-11-05 00:00:00', '2020-11-05 00:00:00'),
+(11, 'Luis Alves', 'Rua 25 de abril', '1234567890123', 'luisalves@aedah.pt', 1, NULL, '2021-01-08 17:23:36', '2021-01-08 17:23:28');
 
 -- --------------------------------------------------------
 
@@ -108,7 +110,8 @@ INSERT INTO `encomendas_produtos` (`id_enc_prod`, `id_produto`, `id_encomenda`, 
 (1, 1, 1, 2, 1.5, 0, NULL, '2020-12-02 00:00:00', '2020-12-31 00:00:00'),
 (2, 2, 1, 3, 10.5, 0, NULL, '2020-12-03 00:00:00', '2020-12-25 00:00:00'),
 (3, 3, 3, 3, 11.5, 0, NULL, '2020-12-11 00:00:00', '2020-12-22 00:00:00'),
-(4, 4, 4, 2, 21.5, 0, NULL, '2020-12-03 00:00:00', '2020-12-31 00:00:00');
+(4, 4, 4, 2, 21.5, 0, NULL, '2020-12-03 00:00:00', '2020-12-31 00:00:00'),
+(6, 1, 11, 0, 0, 0, NULL, '2021-01-15 16:09:32', '2021-01-15 16:09:32');
 
 -- --------------------------------------------------------
 
@@ -135,6 +138,32 @@ INSERT INTO `produtos` (`id_produto`, `designacao`, `stock`, `preco`, `observaco
 (2, 'TV SONY', 200, 50, NULL, '2020-12-25 00:00:00', '2020-12-31 00:00:00'),
 (3, 'PC ASUS', 50, 250, NULL, '2020-12-04 00:00:00', '2020-12-30 00:00:00'),
 (4, 'Apple iPhone', 200, 1000, NULL, '2020-12-02 00:00:00', '2020-12-31 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tipo_user` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'normal' COMMENT 'normal ou admin',
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `tipo_user`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Luis Alves', 'a15016@aedah.pt', NULL, '$2y$10$oqih4teIkH2T8pD9xjSGVu0Vyy2FEbMsllo3pX/xDhQALAc5b8GFu', 'admin', NULL, '2021-01-15 16:06:03', '2021-01-15 16:06:03'),
+(2, 'Luis Filipe', 'a1234@aedah.pt', NULL, '$2y$10$koBC6JqhXm/ZZtN8QVqxAO2Z4z7uyCtEUX7GI2Z1uQoh3Y/V3/T96', 'normal', NULL, '2021-01-15 16:06:33', '2021-01-15 16:06:33');
 
 -- --------------------------------------------------------
 
@@ -191,6 +220,12 @@ ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id_produto`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `vendedores`
 --
 ALTER TABLE `vendedores`
@@ -204,31 +239,37 @@ ALTER TABLE `vendedores`
 -- AUTO_INCREMENT for table `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `encomendas`
 --
 ALTER TABLE `encomendas`
-  MODIFY `id_encomenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_encomenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `encomendas_produtos`
 --
 ALTER TABLE `encomendas_produtos`
-  MODIFY `id_enc_prod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_enc_prod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `vendedores`
 --
 ALTER TABLE `vendedores`
-  MODIFY `id_vendedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_vendedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

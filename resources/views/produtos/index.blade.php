@@ -15,6 +15,7 @@ Produtos:
 </li>
 @endforeach
 </ul>
+@if(Gate::allows('admin'))
 <a href="{{route('produtos.create',['id_produtos'=>$produtos->id_produto])}}" class="btn btn-info" role="button">Adicionar Produto</a>
-
+@endif
 @endsection

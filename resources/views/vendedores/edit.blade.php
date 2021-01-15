@@ -26,6 +26,7 @@ Preço: <input type="text" name="email" value="{{$vendedores->email}}"><br>
 Deverá ter um email correto<br>
 @endif
 
+
 <input type="submit" value="Enviar">
 </form>
 @endsection

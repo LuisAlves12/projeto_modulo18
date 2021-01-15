@@ -35,22 +35,22 @@ Route::get('/cliente/{id_cliente}/show','App\Http\Controllers\ClientesController
     ->name('cliente.show');
 
 Route::get('/clientes/create','App\Http\Controllers\ClientesController@create')
-    ->name('cliente.create');
+    ->name('cliente.create')->middleware('auth');
 
 Route::post('/clientes/store','App\Http\Controllers\ClientesController@store')
-    ->name('cliente.store');
+    ->name('cliente.store')->middleware('auth');
 
 Route::get('/clientes/{id_cliente}/edit','App\Http\Controllers\ClientesController@edit')
-    ->name('cliente.edit');
+    ->name('cliente.edit')->middleware('auth');
 
 Route::patch('/clientes/{id_cliente}/update','App\Http\Controllers\ClientesController@update')
-    ->name('cliente.update');
+    ->name('cliente.update')->middleware('auth');
 
 Route::get('/clientes/{id_cliente}/deleted','App\Http\Controllers\ClientesController@deleted')
-    ->name('cliente.deleted');
+    ->name('cliente.deleted')->middleware('auth');
 
 Route::delete('/clientes/{id_cliente}/destroy','App\Http\Controllers\ClientesController@destroy')
-    ->name('cliente.destroy');
+    ->name('cliente.destroy')->middleware('auth');
 
 //Route Encomendas
 
@@ -61,22 +61,22 @@ Route::get('/encomendas/{id_encomenda}/show','App\Http\Controllers\EncomendasCon
     ->name('encomendas.show');
 
 Route::get('/encomendas/create','App\Http\Controllers\EncomendasController@create')
-    ->name('encomendas.create');
+    ->name('encomendas.create')->middleware('auth');
 
 Route::post('/encomendas/store','App\Http\Controllers\EncomendasController@store')
-    ->name('encomendas.store');
+    ->name('encomendas.store')->middleware('auth');
 
 Route::get('/encomendas/{id_encomenda}/edit','App\Http\Controllers\EncomendasController@edit')
-    ->name('encomendas.edit');
+    ->name('encomendas.edit')->middleware('auth');
 
 Route::patch('/encomendas/{id_encomenda}/update','App\Http\Controllers\EncomendasController@update')
-    ->name('encomendas.update');
+    ->name('encomendas.update')->middleware('auth');
 
 Route::get('/encomendas/{id_encomenda}/deleted','App\Http\Controllers\EncomendasController@deleted')
-    ->name('encomendas.deleted');
+    ->name('encomendas.deleted')->middleware('auth');
 
 Route::delete('/encomendas/{id_encomenda}/destroy','App\Http\Controllers\EncomendasController@destroy')
-    ->name('encomendas.destroy');
+    ->name('encomendas.destroy')->middleware('auth');
 
 
 //Route Produtos
@@ -88,22 +88,22 @@ Route::get('/produtos/{id_produtos}/show','App\Http\Controllers\ProdutosControll
     ->name('produtos.show');
 
 Route::get('/produtos/create','App\Http\Controllers\ProdutosController@create')
-    ->name('produtos.create');
+    ->name('produtos.create')->middleware('auth');
 
 Route::post('/produtos/store','App\Http\Controllers\ProdutosController@store')
-    ->name('produtos.store');
+    ->name('produtos.store')->middleware('auth');
 
 Route::get('/produtos/{id_produtos}/edit','App\Http\Controllers\ProdutosController@edit')
-    ->name('produtos.edit');
+    ->name('produtos.edit')->middleware('auth');
 
 Route::patch('/produtos/{id_produtos}/update','App\Http\Controllers\ProdutosController@update')
-    ->name('produtos.update');
+    ->name('produtos.update')->middleware('auth');
 
 Route::get('/produtos/{id_produtos}/deleted','App\Http\Controllers\ProdutosController@deleted')
-    ->name('produtos.deleted');
+    ->name('produtos.deleted')->middleware('auth');
 
 Route::delete('/produtos/{id_produtos}/destroy','App\Http\Controllers\ProdutosController@destroy')
-    ->name('produtos.destroy');
+    ->name('produtos.destroy')->middleware('auth');
 
 //Route Vendedores
 
@@ -114,22 +114,22 @@ Route::get('/vendedores/{id_vendedor}/show','App\Http\Controllers\VendedoresCont
     ->name('vendedores.show');
     
 Route::get('/vendedores/create','App\Http\Controllers\VendedoresController@create')
-    ->name('vendedores.create');
+    ->name('vendedores.create')->middleware('auth');
 
 Route::post('/vendedores/store','App\Http\Controllers\VendedoresController@store')
-    ->name('vendedores.store');
+    ->name('vendedores.store')->middleware('auth');
 
 Route::get('/vendedores/{id_vendedor}/edit','App\Http\Controllers\VendedoresController@edit')
-    ->name('vendedores.edit');
+    ->name('vendedores.edit')->middleware('auth');
 
 Route::patch('/vendedores/{id_vendedor}/update','App\Http\Controllers\VendedoresController@update')
-    ->name('vendedores.update');
+    ->name('vendedores.update')->middleware('auth');
 
 Route::get('/vendedores/{id_vendedor}/deleted','App\Http\Controllers\VendedoresController@deleted')
-    ->name('vendedores.deleted');
+    ->name('vendedores.deleted')->middleware('auth');
 
 Route::delete('/vendedores/{id_vendedor}/destroy','App\Http\Controllers\VendedoresController@destroy')
-    ->name('vendedores.destroy');
+    ->name('vendedores.destroy')->middleware('auth');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

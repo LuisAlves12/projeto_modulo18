@@ -13,6 +13,8 @@ Stock: {{$produtos->stock}}<br>
 Preço: {{$produtos->preco}}<br>
 Observações: {{$produtos->observacoes}}
 </ul>
+@if(Gate::allows('admin'))
 <a href="{{route('produtos.edit',['id_produtos'=>$produtos->id_produto])}}" class="btn btn-info" role="button">Editar Produto</a>
 <a href="{{route('produtos.deleted',['id_produtos'=>$produtos->id_produto])}}" class="btn btn-info" role="button">Eliminar Produto</a>
+@endif
 @endsection

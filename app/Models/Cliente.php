@@ -14,7 +14,8 @@ class Cliente extends Model
         'nome',
         'morada',
         'telefone',
-        'email'
+        'email',
+        'ficheiro_cliente'
     ];
 
     public function encomendas(){

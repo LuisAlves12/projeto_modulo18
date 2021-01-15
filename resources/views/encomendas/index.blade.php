@@ -15,5 +15,7 @@ Encomendas:
 </li>
 @endforeach
 </ul>
+@if(Gate::allows('admin'))
 <a href="{{route('encomendas.create')}}" class="btn btn-info" role="button">Adiciona Encomenda</a>
+@endif
 @endsection

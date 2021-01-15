@@ -15,5 +15,7 @@ Clientes:
 </li>
 @endforeach
 </ul>
+@if(Gate::allows('admin'))
 <a href="{{route('cliente.create')}}" class="btn btn-info" role="button">Adiciona clientes</a>
+@endif
 @endsection

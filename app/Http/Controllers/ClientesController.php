@@ -46,8 +46,15 @@ class ClientesController extends Controller
             'nome'=>['required','min:3','max:50'],
             'morada'=>['nullable','min:3','max:255'],
             'telefone'=>['required','numeric','min:13'],
-            'email'=>['nullable','min:3','max:255']
+            'email'=>['nullable','min:3','max:255'],
+            'ficheiro_cliente'=>['file','mimes:pdf,doc,docx','max:2000']
         ]);
+        if($request->hasfile('ficheiro_cliente')){
+            $nomeFicheiro=$request->file('ficheiro_cliente')->getClientOriginalName();
+            $nomeFicheiro=time().'_'.$nomeFicheiro;
+            $guardarFicheiro=$request->file('ficheiro_cliente')->storeAs('imagens/ficheiros',$nomeFicheiro);
+            $novoCliente['ficheiro_cliente']=$nomeFicheiro;
+        }
         if(Gate::allows('admin')){
             $userAtual=Auth::user()->id;
             $novoCliente['id_user']=$userAtual;
@@ -86,8 +93,15 @@ class ClientesController extends Controller
             'nome'=>['required','min:3','max:50'],
             'morada'=>['nullable','min:3','max:255'],
             'telefone'=>['required','numeric','min:13'],
-            'email'=>['nullable','min:3','max:255']
+            'email'=>['nullable','min:3','max:255'],
+            'ficheiro_cliente'=>['file','mimes:pdf,doc,docx,pptx','max:2000']
         ]);
+        if($request->hasfile('ficheiro_cliente')){
+            $nomeFicheiro=$request->file('ficheiro_cliente')->getClientOriginalName();
+            $nomeFicheiro=time().'_'.$nomeFicheiro;
+            $guardarFicheiro=$request->file('ficheiro_cliente')->storeAs('imagens/ficheiros',$nomeFicheiro);
+            $editarCliente['ficheiro_cliente']=$nomeFicheiro;
+        }
         if(Gate::allows('admin')){
             $editCliente=$clientes->update($editarCliente);
             return redirect()->route('cliente.show',[
