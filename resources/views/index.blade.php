@@ -45,5 +45,5 @@ $(document).ready(function(){
   <div><img src="{{asset('imagens/encomendas4.jpg')}}"></div>
 </div>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
 @endsection

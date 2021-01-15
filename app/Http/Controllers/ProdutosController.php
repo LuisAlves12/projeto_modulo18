@@ -44,8 +44,15 @@ class ProdutosController extends Controller
             'designacao'=>['required','min:5','max:100'],
             'stock'=>['nullable','numeric','min:1'],
             'preco'=>['nullable','numeric','min:1'],
+            'imagem_produto'=>['image','nullable','max:2000'],
             'observacoes'=>['nullable','min:5','max:255']
         ]);
+        if($request->hasfile('imagem_produto')){
+            $nomeImagem=$request->file('imagem_produto')->getClientOriginalName();
+            $nomeImagem=time().'_'.$nomeImagem;
+            $guardarImagem=$request->file('imagem_produto')->storeAs('imagens/produtos',$nomeImagem);
+            $novoProduto['imagem_produto']=$nomeImagem;
+        }
         if(Gate::allows('admin')){
             $produto=Produto::create($novoProduto);
             return redirect()->route('produtos.show',[
@@ -78,9 +85,16 @@ class ProdutosController extends Controller
         $editProduto=$request->validate([
             'designacao'=>['required','min:5','max:100'],
             'stock'=>['nullable','numeric','min:1'],
+            'imagem_produto'=>['image','nullable','max:2000'],
             'preco'=>['nullable','numeric','min:1'],
             'observacoes'=>['nullable','min:5','max:255']
         ]);
+        if($request->hasfile('imagem_produto')){
+            $nomeImagem=$request->file('imagem_produto')->getClientOriginalName();
+            $nomeImagem=time().'_'.$nomeImagem;
+            $guardarImagem=$request->file('imagem_produto')->storeAs('imagens/produtos',$nomeImagem);
+            $editProduto['imagem_produto']=$nomeImagem;
+        }
         if(Gate::allows('admin')){
             $editarProduto=$produto->update($editProduto);
             return redirect()->route('produtos.show',[

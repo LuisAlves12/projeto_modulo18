@@ -13,6 +13,7 @@ Morada: {{$id_cliente->morada}}<br>
 Telefone: {{$id_cliente->telefone}}<br>
 Email: {{$id_cliente->email}}<br>
 Ficheiro Cliente: @if(isset($id_cliente->ficheiro_cliente))<a href="{{asset('imagens/ficheiros/'.$id_cliente->ficheiro_cliente)}}" target="_blank">Ficheiros</a>@endif<br>
+Imagem Cliente: @if(isset($id_cliente->imagem_cliente ))<img src="{{asset('imagens/clientes/'.$id_cliente->imagem_cliente)}}" style="width:10%">@endif<br>
 
 </ul>
 @if(Gate::allows('admin'))

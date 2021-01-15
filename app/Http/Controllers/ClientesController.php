@@ -47,8 +47,15 @@ class ClientesController extends Controller
             'morada'=>['nullable','min:3','max:255'],
             'telefone'=>['required','numeric','min:13'],
             'email'=>['nullable','min:3','max:255'],
-            'ficheiro_cliente'=>['file','mimes:pdf,doc,docx','max:2000']
+            'ficheiro_cliente'=>['file','mimes:pdf,doc,docx','max:2000'],
+            'imagem_cliente'=>['image','nullable','max:2000']
         ]);
+        if($request->hasfile('imagem_cliente')){
+            $nomeImagem=$request->file('imagem_cliente')->getClientOriginalName();
+            $nomeImagem=time().'_'.$nomeImagem;
+            $guardarImagem=$request->file('imagem_cliente')->storeAs('imagens/clientes',$nomeImagem);
+            $novoCliente['imagem_cliente']=$nomeImagem;
+        }
         if($request->hasfile('ficheiro_cliente')){
             $nomeFicheiro=$request->file('ficheiro_cliente')->getClientOriginalName();
             $nomeFicheiro=time().'_'.$nomeFicheiro;
@@ -94,8 +101,15 @@ class ClientesController extends Controller
             'morada'=>['nullable','min:3','max:255'],
             'telefone'=>['required','numeric','min:13'],
             'email'=>['nullable','min:3','max:255'],
-            'ficheiro_cliente'=>['file','mimes:pdf,doc,docx,pptx','max:2000']
+            'ficheiro_cliente'=>['file','mimes:pdf,doc,docx,pptx','max:2000'],
+            'imagem_cliente'=>['image','nullable','max:2000']
         ]);
+        if($request->hasfile('imagem_cliente')){
+            $nomeImagem=$request->file('imagem_cliente')->getClientOriginalName();
+            $nomeImagem=time().'_'.$nomeImagem;
+            $guardarImagem=$request->file('imagem_cliente')->storeAs('imagens/clientes',$nomeImagem);
+            $editarCliente['imagem_cliente']=$nomeImagem;
+        }
         if($request->hasfile('ficheiro_cliente')){
             $nomeFicheiro=$request->file('ficheiro_cliente')->getClientOriginalName();
             $nomeFicheiro=time().'_'.$nomeFicheiro;

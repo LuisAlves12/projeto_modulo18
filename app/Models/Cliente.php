@@ -15,7 +15,8 @@ class Cliente extends Model
         'morada',
         'telefone',
         'email',
-        'ficheiro_cliente'
+        'ficheiro_cliente',
+        'imagem_cliente'
     ];
 
     public function encomendas(){

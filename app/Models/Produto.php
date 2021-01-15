@@ -16,6 +16,7 @@ class Produto extends Model
         'designacao',
         'stock',
         'preco',
+        'imagem_produto',
         'observacoes'
     ];
 

@@ -7,7 +7,7 @@ Produtos:
 @endsection
 @section('conteudo')
 
-<form action="{{route('produtos.store')}}" method="post">
+<form action="{{route('produtos.store')}}" enctype="multipart/form-data" method="post">
     @csrf 
 
 Designacao: <input type="text" name="designacao" value="{{old('designacao')}}"><br>
@@ -28,6 +28,11 @@ Deverá ter um Preço correto<br>
 Observações: <input type="text" name="observacoes" value="{{old('observacoes')}}"><br>
 @if($errors->has('observacoes'))
 Deverá ter um stock correto<br>
+@endif
+
+Imagem Produto:  <input type="file" name="imagem_produto" value=" {{old('imagem_produto')}}"><br>
+@if($errors->has('imagem_produto'))
+Deverá ter um Imagem correto<br>
 @endif
 
 <input type="submit" value="Enviar">

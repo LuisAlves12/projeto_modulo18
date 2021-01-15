@@ -36,6 +36,11 @@ Ficheiro Cliente: <input type="file" name="ficheiro_cliente" value="{{$clientes-
 Deverá ter um Ficheiro correto<br>
 @endif
 
+Imagem Cliente: <input type="file" name="imagem_cliente" value="{{$clientes->imagem_cliente}}"><img src="{{asset('imagens/clientes/'.$clientes->imagem_cliente)}}" style="width:10%"><br>
+@if($errors->has('imagem_cliente'))
+Deverá ter um Imagem Capa correto<br>
+@endif
+
 <input type="submit" value="Enviar">
 </form>
 @endsection

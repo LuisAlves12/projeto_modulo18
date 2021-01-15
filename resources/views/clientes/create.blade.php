@@ -35,6 +35,11 @@ Ficheiro Cliente: <input type="file" name="ficheiro_cliente" value="{{old('fiche
 Deverá ter um Ficheiro correto<br>
 @endif
 
+Imagem Cliente:  <input type="file" name="imagem_cliente" value=" {{old('imagem_cliente')}}"><br>
+@if($errors->has('imagem_cliente'))
+Deverá ter um Imagem correto<br>
+@endif
+
 <input type="submit" value="Enviar">
 </form>
 @endsection
