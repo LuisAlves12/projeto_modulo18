@@ -105,6 +105,9 @@ Route::get('/produtos/{id_produtos}/deleted','App\Http\Controllers\ProdutosContr
 Route::delete('/produtos/{id_produtos}/destroy','App\Http\Controllers\ProdutosController@destroy')
     ->name('produtos.destroy')->middleware('auth');
 
+Route::get('/produtos/{id_produtos}/likes','App\Http\Controllers\ProdutosController@likes')
+    ->name('produtos.likes');
+
 //Route Vendedores
 
 Route::get('/vendedores','App\Http\Controllers\VendedoresController@index')

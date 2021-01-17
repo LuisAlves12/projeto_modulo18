@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\Produto;
 use App\Models\Encomenda;
+use App\Models\Like;
 
 class ProdutosController extends Controller
 {
@@ -19,10 +20,14 @@ class ProdutosController extends Controller
 
 
     public function show(Request $request){
-        $id_produto = $request->id_produtos;
+        $id_produtos = $request->id_produtos;
+        $utilizador="";
+        $likes = Like::where('id_produto',$id_produto)->count();
         $produto=Produto::where('id_produto',$id_produto)->with('encomendas')->first();
         return view('produtos.show',[
-            'produtos'=>$produto
+            'produtos'=>$produto,
+            'likes'=>$likes,
+            'utilizador'=>$utilizador
         ]);
     }
 
@@ -141,6 +146,28 @@ class ProdutosController extends Controller
             ->with('msg','Não têm permissão para aceder a area pretendida');
         }
     }
+
+
+    public function likes(Request $request){
+        $id_produto = $request->id_produtos;
+        if(Auth()->check()){
+            $idUser = Auth::user()->id;
+            $like = Like::where('id_user',$idUser)->where('id_produto',$id_produto)->first();
+            if($like == null){
+                $novoLike['id_user']=$idUser;
+                $novoLike['id_produto']=$id_produto;
+                $like = Like::create($novoLike);
+                return redirect()->route('produtos.show',['id_produto'=>$id_produto]);
+            }
+            else{
+                return redirect()->route('produtos.show',['id_produto'=>$id_produto]);
+            }
+        }
+        else{
+            return redirect()->route('produtos.show',['id_produto'=>$id_produto]->with('msg','Não está logado'));
+        }
+    }
+
 
 
 }

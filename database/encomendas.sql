@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 15-Jan-2021 às 23:48
+-- Tempo de geração: 17-Jan-2021 às 16:10
 -- Versão do servidor: 10.4.14-MariaDB
 -- versão do PHP: 7.3.23
 
@@ -116,6 +116,26 @@ INSERT INTO `encomendas_produtos` (`id_enc_prod`, `id_produto`, `id_encomenda`, 
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `likes`
+--
+
+CREATE TABLE `likes` (
+  `id_produto` int(11) DEFAULT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_like` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `likes`
+--
+
+INSERT INTO `likes` (`id_produto`, `id_user`, `id_like`) VALUES
+(1, 3, 1),
+(NULL, 3, 2);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `produtos`
 --
 
@@ -164,7 +184,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `tipo_user`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Luis Alves', 'a15016@aedah.pt', NULL, '$2y$10$oqih4teIkH2T8pD9xjSGVu0Vyy2FEbMsllo3pX/xDhQALAc5b8GFu', 'admin', NULL, '2021-01-15 16:06:03', '2021-01-15 16:06:03'),
-(2, 'Luis Filipe', 'a1234@aedah.pt', NULL, '$2y$10$koBC6JqhXm/ZZtN8QVqxAO2Z4z7uyCtEUX7GI2Z1uQoh3Y/V3/T96', 'normal', NULL, '2021-01-15 16:06:33', '2021-01-15 16:06:33');
+(2, 'Luis Filipe', 'a1234@aedah.pt', NULL, '$2y$10$koBC6JqhXm/ZZtN8QVqxAO2Z4z7uyCtEUX7GI2Z1uQoh3Y/V3/T96', 'normal', NULL, '2021-01-15 16:06:33', '2021-01-15 16:06:33'),
+(3, 'Luis Silva', 'luisalve627@gmail.com', NULL, '$2y$10$ip6IJc55T9YFcGRZ3UytBOkDNEZm9xtOUmuH3CPoqbvqVMhZ4WEWK', 'normal', NULL, '2021-01-17 14:12:08', '2021-01-17 14:12:08');
 
 -- --------------------------------------------------------
 
@@ -215,6 +236,12 @@ ALTER TABLE `encomendas_produtos`
   ADD PRIMARY KEY (`id_enc_prod`);
 
 --
+-- Índices para tabela `likes`
+--
+ALTER TABLE `likes`
+  ADD PRIMARY KEY (`id_like`);
+
+--
 -- Índices para tabela `produtos`
 --
 ALTER TABLE `produtos`
@@ -255,6 +282,12 @@ ALTER TABLE `encomendas_produtos`
   MODIFY `id_enc_prod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT de tabela `likes`
+--
+ALTER TABLE `likes`
+  MODIFY `id_like` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
@@ -264,7 +297,7 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `vendedores`
