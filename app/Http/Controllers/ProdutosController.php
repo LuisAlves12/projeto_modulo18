@@ -20,13 +20,11 @@ class ProdutosController extends Controller
 
 
     public function show(Request $request){
-        $id_produtos = $request->id_produtos;
+        $id_produto = $request->id_produtos;
         $utilizador="";
-        $likes = Like::where('id_produto',$id_produto)->count();
         $produto=Produto::where('id_produto',$id_produto)->with('encomendas')->first();
         return view('produtos.show',[
             'produtos'=>$produto,
-            'likes'=>$likes,
             'utilizador'=>$utilizador
         ]);
     }
